@@ -139,13 +139,13 @@ function Home({navigation}){
     const [description, setDescription] = React.useState("");
     return (
         <View style={styles.container}>
-           <Text style={styles.title} >Tecsi Payments for Stripe</Text>
+           <Text style={styles.title} >Stripe Payments</Text>
 
         <Text style={styles.AmountLabel}>Amount</Text>
         <CurrencyInput
             value={value}
             onChangeValue={setValue}
-            prefix="$"
+            prefix="£"
             delimiter=","
             separator="."
             precision={2}
@@ -171,7 +171,7 @@ function Home({navigation}){
          >Description</Text>
         <TextInput
           value={description}
-          placeholder='Payment for a tattoo '
+          placeholder='payment description'
           //onChangeValue={setDescription}
           onChangeText={(desText) => {
             setDescription(desText);
@@ -179,7 +179,8 @@ function Home({navigation}){
           style={styles.DescriptionInput}
         >
         </TextInput>
-        <Button color='blue'
+        <Button
+        style={styles.TakePaymentButton}
          onPress={ () => {CreatePaymentIntent(value, description, email)} }
         title='Take Payment'
          />
@@ -204,7 +205,7 @@ function Home({navigation}){
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#405285',
+      backgroundColor: 'white',
       opacity: 0.6,
       alignItems: 'center',
       justifyContent: 'center',
@@ -222,7 +223,7 @@ const styles = StyleSheet.create({
       textAlign: 'left'
     },
     DescriptionStyle:{
-        fontSize: 25,
+        fontSize: 30,
         marginBottom: 0,
         textAlign: 'left'
     }
@@ -233,11 +234,12 @@ const styles = StyleSheet.create({
         height: 80,
         marginBottom: 10,
         borderWidth: 1,
-        borderColor: 'white',
+        borderColor: 'black',
         borderRadius: 6,
         textAlign: 'center'
     },
     CustomerEmailStyle: {
+        marginTop: 10,
         fontSize: 25,
         marginBottom: 0,
         textAlign: 'left'
@@ -248,13 +250,13 @@ const styles = StyleSheet.create({
         height: 40,
         marginBottom: 10,
         borderWidth: 1,
-        borderColor: 'white',
+        borderColor: 'black',
         borderRadius: 6,
         textAlign: 'center'
     },
-    logo: {
-      width: 100,
-      height: 100
+    TakePaymentButton: {
+      width: 150,
+      color:'white'
     }
   });
 

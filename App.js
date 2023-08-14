@@ -30,11 +30,6 @@ const dimensions = Dimensions.get("window");
 export default function App() {
 
   return (
-    <ImageBackground
-    source={require('./testBackground.jpg')}
-    style={{flex: 1, justifyContent: 'center', height: dimensions.height + 50, width: dimensions.width}}
-    resizeMode='cover'
-    >
     <NavigationContainer theme={navTheme}>
        
       <Stack.Navigator screenOptions={{headerShown: false}}>
@@ -48,7 +43,6 @@ export default function App() {
         />
       </Stack.Navigator> 
     </NavigationContainer>
-    </ImageBackground> 
     
     
    
