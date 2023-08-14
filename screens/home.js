@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, TextInput, Alert,} from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Alert, Vibration} from 'react-native';
 import { Dimensions } from 'react-native';
 import CurrencyInput from 'react-native-currency-input';
 import {NavigatorContainer} from '@react-navigation/native';
@@ -23,6 +23,7 @@ function ClearReaderScreen()
     },
   }).then((res) => {res.json()}).then((readerData) => {
     console.log("Payment Handed Off Successfully", readerData)
+
   }).catch((er) => {
     console.error("Error From Reader", er); 
   })
@@ -68,12 +69,12 @@ function CreatePaymentIntent(value, descriptionInput, CustomerEmail)
 {
    // ADD Percentage
    let RawValue = value * 100;
-   let valToUse = RawValue * 1.027;
+   //let valToUse = RawValue * 1.027;
     const data = {
-        amount: valToUse,
+        amount: RawValue,
         description: descriptionInput,
         receipt_email: CustomerEmail,
-        currency: 'usd',
+        currency: 'gbp',
         "payment_method_types[]": ['card_present']
     }
    let formBodyEncoded = URLEncodeRequest(data);
@@ -139,7 +140,7 @@ function Home({navigation}){
     const [description, setDescription] = React.useState("");
     return (
         <View style={styles.container}>
-           <Text style={styles.title} >Stripe Payments</Text>
+           <Text style={styles.title} >Tecsi POS</Text>
 
         <Text style={styles.AmountLabel}>Amount</Text>
         <CurrencyInput
@@ -183,16 +184,18 @@ function Home({navigation}){
         style={styles.TakePaymentButton}
          onPress={ () => {CreatePaymentIntent(value, description, email)} }
         title='Take Payment'
+        color="#ab924d" // #ab924d
          />
          <Button 
-          color='orange'
+          color='black'
           title="Clear Reader"
           onPress={() =>{
             ClearReaderScreen()
+            Vibration.vibrate(300)
           }}
          />
         <Button
-        color='red'
+        color='grey' // grey
         title='Settings'
         onPress={() =>{
             navigation.navigate('Settings', {})

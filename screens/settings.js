@@ -17,7 +17,7 @@ class Settings extends Component {
         try{
             await AsyncStorage.setItem("terminal_id", this.state.TerminalID);
             await AsyncStorage.setItem("API_Key", this.state.APIKey);
-            Alert.alert("Saved", "your configuration has been ")
+            Alert.alert("Saved", "your configuration has been saved!");
         }catch(error)
         {
             console.log(error)
@@ -70,6 +70,7 @@ class Settings extends Component {
                 </TextInput>
                 <Button
                 title='Save'
+                color="black"
                 onPress={this.onSubmit}
                     />
         </View>
@@ -80,7 +81,7 @@ class Settings extends Component {
 const ProductsStyle = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#405285',
+        backgroundColor: 'white',
         opacity: 0.6,
         alignItems: 'center',
         justifyContent: 'center',
@@ -101,7 +102,7 @@ const ProductsStyle = StyleSheet.create({
         height: 100,
         marginBottom: 10,
         borderWidth: 1,
-        borderColor: 'white',
+        borderColor: 'black',
         borderRadius: 6,
         textAlign: 'center'
     },
@@ -116,7 +117,7 @@ const ProductsStyle = StyleSheet.create({
         height: 100,
         marginBottom: 10,
         borderWidth: 1,
-        borderColor: 'white',
+        borderColor: 'black',
         borderRadius: 6,
         textAlign: 'center'
     },
